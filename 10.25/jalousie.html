@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>js百叶窗</title>
+<style>
+*{margin: 0;padding: 0;}
+ul,li{list-style: none;}
+ul{
+    margin: 20px auto;
+    width: 600px;
+    height: 200px;
+    border:2px solid red;
+    position: relative;
+}
+li{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100px;
+    float: left;
+    transition: all 0.2s;
+    position: relative;
+    z-index: 2;
+}
+.big{
+    width: 200px;
+}
+.o{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    height: 200px;
+    z-index: 1;
+}
+</style>
+</head>
+<body>
+    <ul>
+        <li class="big"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <div class="o"></div>
+    </ul>
+<script src="../jquery/jquery-3.4.1.min.js"></script>
+<script>
+//获取li
+let lis=$("li");
+let o=$(".o");
+lis.each((i,v)=>{
+    $(v).css("background-color",getColor());
+    $(v).hover(addClass,removeClass);
+})
+o.css("background-color",getColor());
+o.hover(adClass,reClass);
+function adClass(){
+    lis.removeClass("big");
+}
+function reClass(){
+    lis.first().addClass("big");
+}
+function addClass(){
+    if(!$(this).hasClass("big")){
+        $(".big").removeClass("big");
+        $(this).addClass("big");
+    }
+}
+function removeClass(){
+    $(this).removeClass("big");
+    lis.first().addClass("big");
+}
+function getColor(){
+    return `rgb(${getRandom(1,255)},${getRandom(1,255)},${getRandom(1,255)})`;
+}
+function getRandom(min,max){
+    return Math.floor(Math.random()*(max-min+1))+min;
+}
+
+</script>
+<noscript>
+<p>本页面需要浏览器支持（启用）JavaScript。</p>
+</noscript>
+</body>
+</html>

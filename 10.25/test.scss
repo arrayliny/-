@@ -1,0 +1,17 @@
+$Color:red;
+
+body{
+    color:$Color;
+    font:20px/30px "";
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background-color:$Color;
+    section{
+        color:blue;
+        font :30px/40px "";
+    }
+}
+$headings:(h1:2px,h2:5px);
+
